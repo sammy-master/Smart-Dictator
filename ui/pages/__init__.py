@@ -1,0 +1,1 @@
+# Smart Dictator pages package
