@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (
     QPushButton, QLabel, QStackedWidget, QFrame,
     QSizePolicy, QScrollArea
 )
+import webbrowser
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QScreen
 
@@ -161,7 +162,7 @@ class Sidebar(QWidget):
         lay.setContentsMargins(12, 0, 12, 0)
         lay.setSpacing(10)
 
-        avatar = QLabel("U")
+        avatar = QLabel("S")
         avatar.setObjectName("user_avatar")
         avatar.setFixedSize(34, 34)
         avatar.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -173,7 +174,7 @@ class Sidebar(QWidget):
         il.setContentsMargins(0, 0, 0, 0)
         il.setSpacing(1)
 
-        name = QLabel("User")
+        name = QLabel("Saksham Sharma")
         name.setObjectName("user_name")
         name.setFont(QFont("Segoe UI", 12, QFont.Weight.Bold))
 
@@ -187,6 +188,15 @@ class Sidebar(QWidget):
         lay.addWidget(avatar)
         lay.addWidget(info)
         lay.addStretch()
+        
+        port_btn = QPushButton("??")
+        port_btn.setToolTip("Open Saksham Sharma Portfolio")
+        port_btn.setFixedSize(26, 26)
+        port_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        port_btn.setStyleSheet("background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); border-radius: 6px; color: #c084fc; font-size: 11px;")
+        port_btn.clicked.connect(lambda: webbrowser.open("https://saksham-personalportfolio.vercel.app"))
+        lay.addWidget(port_btn)
+        
         return w
 
     def _on_click(self, idx: int):
